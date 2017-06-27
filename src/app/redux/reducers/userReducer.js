@@ -15,6 +15,13 @@ const userReducer = (state= {
                 name: action.payload
             };
             break;
+        case "SET_NAME_FULFILLED":
+            state ={
+                //Take all property and add to this new object using spread operator
+                ...state,
+                name: action.payload
+            };
+            break;
         case "SET_ID":
             state ={
                 //Take all property and add to this new object using spread operator

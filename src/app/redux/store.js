@@ -6,11 +6,13 @@ import { createStore,combineReducers,applyMiddleware } from 'redux';
 import { logger } from 'redux-logger';
 import mathReducer from "./reducers/mathReducer";
 import userReducer from "./reducers/userReducer";
+import thunk from "redux-thunk";
+import promise from "redux-promise-middleware"
 
 
 //params reducer and state
 //If reducer has a default value for state then we dont have to pass it in create store
 export default  createStore(combineReducers({ mathReducer,userReducer}),
     {},
-    applyMiddleware(logger)
+    applyMiddleware(logger,thunk,promise())
 );

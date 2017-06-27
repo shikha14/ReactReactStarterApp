@@ -14,3 +14,26 @@ export function setId(Id){
         payload:Id
     };
 }
+
+export function asyncSetName(name) {
+    return dispatch =>{
+        setTimeout(()=>{
+            dispatch({
+                type:"SET_NAME",
+                payload:name
+            })
+        },2000)
+    }
+}
+
+export function setNameUsingPromise(name) {
+    return {
+        type:"SET_NAME",
+        payload:new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve(name);
+            },2000)
+
+        })
+    };
+}

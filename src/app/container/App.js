@@ -6,7 +6,7 @@ import React from "react";
 import { User } from "../components/User";
 import { Main } from "../components/Main";
 import { connect } from "react-redux";
-import { setName } from "../redux/actions/userActions"
+import { asyncSetName, setNameUsingPromise } from "../redux/actions/userActions"
 
 
 class App extends React.Component {
@@ -19,7 +19,7 @@ class App extends React.Component {
     render() {
         return (
             <div className="container">
-                   <Main changeUserName={ () => this.props.setName("New name")} />
+                   <Main changeUserName={ () => this.props.setNameUsingPromise("New name")} />
                 <User username={this.props.user.name}/>
             </div>
     );
@@ -36,8 +36,11 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return{
        setName:(name) =>{
-           dispatch(setName(name));
-       }
+           dispatch(asyncSetName(name));
+       },
+        setNameUsingPromise:(name) =>{
+            dispatch(setNameUsingPromise(name));
+        }
     }
 };
 
