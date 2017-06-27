@@ -4,25 +4,21 @@
 
 import React from "react";
 import {render} from "react-dom";
+import App from "./container/App";
+import { Provider } from "react-redux";
+
+import store from './redux/store';
 
 
-class App extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-
-        };
-    }
 
 
-    render() {
-        return (
-            <div className="container">
-                    <h1> Hello </h1>
-            </div>
-    );
-    }
-}
 
-render(<App />, window.document.getElementById('app'));
+render(<Provider store={store} >
+        <App />
+    </Provider>,
+    window.document.getElementById('app')
+);
+
+
+
 
